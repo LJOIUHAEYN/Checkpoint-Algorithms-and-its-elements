@@ -1,0 +1,34 @@
+ALGORITHM analyze_sentence
+VAR
+    sentence: STRING
+    char_count: INTEGER
+    word_count: INTEGER
+    vowel_count: INTEGER
+    i: INTEGER
+BEGIN
+    char_count := 0
+    word_count := 1  // We assume the sentence starts with a word.
+    vowel_count := 0
+    
+    // Traverse the sentence to count characters, words, and vowels.
+    FOR i FROM 0 TO sentence.length - 1 STEP i++ DO
+        // Count characters
+        char_count := char_count + 1
+        
+        // Check for space to count words
+        IF sentence[i] = ' ' THEN
+            word_count := word_count + 1
+        END_IF
+        
+        // Check for vowels
+        IF (sentence[i] = 'a' OR sentence[i] = 'e' OR sentence[i] = 'i' OR sentence[i] = 'o' OR sentence[i] = 'u' OR
+            sentence[i] = 'A' OR sentence[i] = 'E' OR sentence[i] = 'I' OR sentence[i] = 'O' OR sentence[i] = 'U') THEN
+            vowel_count := vowel_count + 1
+        END_IF
+    END_FOR
+    
+    // Display the results
+    write("Length of the sentence: ", char_count)
+    write("Number of words in the sentence: ", word_count)
+    write("Number of vowels in the sentence: ", vowel_count)
+END
